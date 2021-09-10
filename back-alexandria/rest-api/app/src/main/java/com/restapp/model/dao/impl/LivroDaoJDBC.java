@@ -28,7 +28,7 @@ public class LivroDaoJDBC extends DB implements LivroDao {
 		this.conn = conn;
 	}
 	
-	@Override
+	
 	public List<Livro> getAll(){
 		String sql = "SELECT * FROM produto AS p INNER JOIN livro AS l ON p.id_prod = l.id_prod "
 				+ "INNER JOIN img_path AS i ON p.id_prod = i.id_prod INNER JOIN usuario AS u ON p.id_user = u.id_user";
@@ -36,7 +36,7 @@ public class LivroDaoJDBC extends DB implements LivroDao {
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
 			
-			List<Livro> list = new ArrayList<>();	
+			List<Livro> list = new ArrayList<Livro>();	
 			Map<Integer, Livro> map = new HashMap<Integer, Livro>();
  			Img img;
  			User user;
@@ -66,7 +66,7 @@ public class LivroDaoJDBC extends DB implements LivroDao {
 		}
 	}	
 	
-	@Override
+	
 	public Livro getById(Integer id_livro){
 		String sql = "SELECT * FROM produto AS p INNER JOIN livro AS l ON p.id_prod = l.id_prod INNER JOIN "
 				+ "img_path AS i ON p.id_prod = i.id_prod INNER JOIN usuario AS u ON p.id_user = u.id_user "
@@ -79,7 +79,7 @@ public class LivroDaoJDBC extends DB implements LivroDao {
 			
 			Livro livro = new Livro();
 			Map<Integer, Livro> map = new HashMap<Integer, Livro>();
- 			List<Img> listimg = new ArrayList<>();
+ 			List<Img> listimg = new ArrayList<Img>();
  			User user;
   			int cont = 0;
   			int chave = 0;
@@ -95,7 +95,7 @@ public class LivroDaoJDBC extends DB implements LivroDao {
 				}
 				
 				if(chave != rs.getInt("i.id_prod") && cont != 1) {
-					listimg = new ArrayList<>();
+					listimg = new ArrayList<Img>();
 					listimg.add(new Img(rs.getInt("i.id_img"), rs.getString("i.path_img"), rs.getString("i.desc_img")));					
 				}
 								
@@ -119,7 +119,7 @@ public class LivroDaoJDBC extends DB implements LivroDao {
 		}
 	}
 	
-	@Override
+	
 	public List<Livro> getLivroTipo(String titulo, String autor, String localidade, Integer limit) {
 		System.out.println("LIVRO LIMIT: "+limit);
 		String sql = "SELECT p.id_prod, p.titulo, p.autor, p.descricao, p.localidade, p.categoria, l.id_livro, l.id_prod, i.id_img,"
@@ -135,7 +135,7 @@ public class LivroDaoJDBC extends DB implements LivroDao {
 			ps.setInt(4, limit);
 			rs = ps.executeQuery();
 			
-			List<Livro> list = new ArrayList<>();	
+			List<Livro> list = new ArrayList<Livro>();	
 			Map<Integer, Livro> map = new HashMap<Integer, Livro>();
  			Img img;
  			User user;
@@ -165,7 +165,7 @@ public class LivroDaoJDBC extends DB implements LivroDao {
 		}		
 	}
 	
-	@Override
+	
 	public List<Livro> getLivroCategoria(String query, Integer limit){		
 		System.out.println("VEIO AQUI"+query);
 		String sql = "SELECT p.id_prod, p.titulo, p.autor, p.descricao, p.localidade, p.categoria, l.id_livro, l.id_prod, i.id_img, " 
@@ -187,7 +187,7 @@ public class LivroDaoJDBC extends DB implements LivroDao {
 			ps.setInt(8, limit);
 			rs = ps.executeQuery();
 			
-			List<Livro> list = new ArrayList<>();	
+			List<Livro> list = new ArrayList<Livro>();	
 			Map<Integer, Livro> map = new HashMap<Integer, Livro>();
  			Img img;
  			User user;

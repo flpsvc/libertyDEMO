@@ -46,7 +46,7 @@ public class DB {
 	}
 	
 	private static Properties loadProperties() {
-		try (FileInputStream fs = new FileInputStream("C:\\Users\\felip\\OneDrive\\Disciplinas - Cursos\\Faculdade\\2020.2\\Projeto Final 2\\PROJETOS\\Alexandria-back\\rest-api\\app\\db.properties")) {
+		try (FileInputStream fs = new FileInputStream("app/db.properties")) {
 		//try (FileInputStream fs = new FileInputStream("C:\\0\\Alexandria-back\\rest-api\\app\\db.properties") {	
 			Properties props = new Properties();
 			props.load(fs);

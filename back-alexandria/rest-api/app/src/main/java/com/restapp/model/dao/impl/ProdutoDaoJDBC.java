@@ -27,7 +27,7 @@ public class ProdutoDaoJDBC extends DB implements ProdutoDao{
 		this.conn = conn;
 	}
 	
-	@Override
+	
 	public List<Produto> getProdNoFiltro(String query, Integer limit){		
 		String sql = "SELECT * FROM produto AS p LEFT JOIN arquitetura AS a ON p.id_prod = a.id_prod "
 				+ "LEFT JOIN livro AS l ON p.id_prod = l.id_prod " 
@@ -53,7 +53,7 @@ public class ProdutoDaoJDBC extends DB implements ProdutoDao{
 			ps.setInt(11, limit);
 			rs = ps.executeQuery();
 			
-			List<Produto> list = new ArrayList<>();
+			List<Produto> list = new ArrayList<Produto>();
 			Map<Integer, Produto> map = new HashMap<Integer, Produto>();
  			Img img;
  			User user;
@@ -83,7 +83,7 @@ public class ProdutoDaoJDBC extends DB implements ProdutoDao{
 		}
 	}
 	
-	@Override
+	
 	public List<Produto> getNovidades(Integer limit) {
 		String sql = "SELECT * FROM produto AS p INNER JOIN img_path AS i ON p.id_prod = i.id_prod "
 				+ "INNER JOIN usuario AS u ON p.id_user = u.id_user GROUP BY p.id_prod ORDER BY p.id_prod DESC LIMIT ?";
@@ -93,7 +93,7 @@ public class ProdutoDaoJDBC extends DB implements ProdutoDao{
 			
 			rs = ps.executeQuery();
 			
-			List<Produto> list = new ArrayList<>();	
+			List<Produto> list = new ArrayList<Produto>();	
 			Map<Integer, Produto> map = new HashMap<Integer, Produto>();
  			Img img;
  			User user;
@@ -123,7 +123,7 @@ public class ProdutoDaoJDBC extends DB implements ProdutoDao{
 		}
 	}
 	
-	@Override
+	
 	public List<Produto> getProdTipo(String titulo, String autor, String localidade, Integer limit){
 		String sql = "SELECT p.id_prod, p.titulo, p.autor, p.descricao, p.localidade, p.categoria, i.id_img, " 
 				+ " i.path_img, i.desc_img, i.id_prod, u.nome FROM produto AS p INNER JOIN img_path AS i ON p.id_prod = i.id_prod "
@@ -137,7 +137,7 @@ public class ProdutoDaoJDBC extends DB implements ProdutoDao{
 			ps.setInt(4, limit);
 			rs = ps.executeQuery();
 			
-			List<Produto> list = new ArrayList<>();
+			List<Produto> list = new ArrayList<Produto>();
 			Map<Integer, Produto> map = new HashMap<Integer, Produto>();
  			Img img;
  			User user;
@@ -168,7 +168,7 @@ public class ProdutoDaoJDBC extends DB implements ProdutoDao{
 		
 	}
 	
-	@Override
+	
 	public Integer getProdCount() {
 		String sql = "SELECT COUNT(*) AS total FROM produto";
 		try {

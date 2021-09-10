@@ -28,7 +28,7 @@ public class ArteDaoJDBC extends DB implements ArteDao {
 		this.conn = conn;
 	}
 	
-	@Override
+	
 	public List<Arte> getAll() {
 		String sql = "SELECT * FROM produto AS p INNER JOIN arte AS ar ON p.id_prod = ar.id_prod "
 				+ "INNER JOIN img_path AS i ON p.id_prod = i.id_prod INNER JOIN usuario AS u ON p.id_user = u.id_user";
@@ -36,7 +36,7 @@ public class ArteDaoJDBC extends DB implements ArteDao {
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
 			
-			List<Arte> list = new ArrayList<>();	
+			List<Arte> list = new ArrayList<Arte>();	
 			Map<Integer, Arte> map = new HashMap<Integer, Arte>();
  			Img img;
  			User user;
@@ -78,7 +78,7 @@ public class ArteDaoJDBC extends DB implements ArteDao {
 			
 			Arte arte = new Arte();	
 			Map<Integer, Arte> map = new HashMap<Integer, Arte>();
- 			List<Img> listimg = new ArrayList<>();
+ 			List<Img> listimg = new ArrayList<Img>();
  			User user;
   			int cont = 0;
   			int chave = 0;
@@ -94,7 +94,7 @@ public class ArteDaoJDBC extends DB implements ArteDao {
 				}
 				
 				if(chave != rs.getInt("i.id_prod") && cont != 1) {
-					listimg = new ArrayList<>();
+					listimg = new ArrayList<Img>();
 					listimg.add(new Img(rs.getInt("i.id_img"), rs.getString("i.path_img"), rs.getString("i.desc_img")));					
 				}
 								
@@ -119,7 +119,7 @@ public class ArteDaoJDBC extends DB implements ArteDao {
 	}
 	
 	
-	@Override
+	
 	public List<Arte> getArteTipo(String titulo, String autor, String localidade, Integer limit) {
 		System.out.println("ARTE LIMIT: "+limit);
 		String sql = "SELECT p.id_prod, p.titulo, p.autor, p.descricao, p.localidade, p.categoria, ar.id_arte, ar.id_prod, i.id_img, "
@@ -135,7 +135,7 @@ public class ArteDaoJDBC extends DB implements ArteDao {
 			ps.setInt(4, limit);
 			rs = ps.executeQuery();
 			
-			List<Arte> list = new ArrayList<>();	
+			List<Arte> list = new ArrayList<Arte>();	
 			Map<Integer, Arte> map = new HashMap<Integer, Arte>();
  			Img img;
  			User user;
@@ -165,7 +165,7 @@ public class ArteDaoJDBC extends DB implements ArteDao {
 		}		
 	}
 	
-	@Override
+	
 	public List<Arte> getArteCategoria(String query, Integer limit){
 		String sql = "SELECT p.id_prod, p.titulo, p.autor, p.descricao, p.localidade, p.categoria, ar.id_arte, ar.id_prod, i.id_img, " 
 				+ "i.path_img, i.desc_img, u.nome FROM produto AS p INNER JOIN " 
@@ -185,7 +185,7 @@ public class ArteDaoJDBC extends DB implements ArteDao {
 			ps.setInt(7, limit);
 			rs = ps.executeQuery();
 			
-			List<Arte> list = new ArrayList<>();	
+			List<Arte> list = new ArrayList<Arte>();	
 			Map<Integer, Arte> map = new HashMap<Integer, Arte>();
  			Img img;
  			User user;

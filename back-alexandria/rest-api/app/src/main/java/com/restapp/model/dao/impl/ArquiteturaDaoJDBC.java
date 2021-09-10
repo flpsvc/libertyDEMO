@@ -27,7 +27,7 @@ public class ArquiteturaDaoJDBC extends DB implements ArquiteturaDao {
 		this.conn = conn;
 	}
 
-	@Override
+	
 	public List<Arquitetura> getAll() {
 		String sql = "SELECT * FROM produto AS p INNER JOIN arquitetura AS a ON p.id_prod = a.id_prod "
 				+ "INNER JOIN img_path AS i ON p.id_prod = i.id_prod INNER JOIN usuario AS u ON p.id_user = u.id_user";
@@ -35,7 +35,7 @@ public class ArquiteturaDaoJDBC extends DB implements ArquiteturaDao {
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
 			
-			List<Arquitetura> list = new ArrayList<>();	
+			List<Arquitetura> list = new ArrayList<Arquitetura>();	
 			Map<Integer, Arquitetura> map = new HashMap<Integer, Arquitetura>();
  			Img img;
  			User user;
@@ -76,7 +76,7 @@ public class ArquiteturaDaoJDBC extends DB implements ArquiteturaDao {
 			
 			Arquitetura arq = new Arquitetura();	
 			Map<Integer, Arquitetura> map = new HashMap<Integer, Arquitetura>();
- 			List<Img> listimg = new ArrayList<>();
+ 			List<Img> listimg = new ArrayList<Img>();
  			User user;
   			int cont = 0;
   			int chave = 0;
@@ -92,7 +92,7 @@ public class ArquiteturaDaoJDBC extends DB implements ArquiteturaDao {
 				}
 				
 				if(chave != rs.getInt("i.id_prod") && cont != 1) {
-					listimg = new ArrayList<>();
+					listimg = new ArrayList<Img>();
 					listimg.add(new Img(rs.getInt("i.id_img"), rs.getString("i.path_img"), rs.getString("i.desc_img")));					
 				}
 								
@@ -116,7 +116,7 @@ public class ArquiteturaDaoJDBC extends DB implements ArquiteturaDao {
 	}
 	
 	
-	@Override
+	
 	public List<Arquitetura> getArqTipo(String titulo, String autor, String localidade, Integer limit) {
 		System.out.println("ARQUITETURA LIMIT: "+limit);
 		System.out.println("ARQ TIPO");
@@ -133,7 +133,7 @@ public class ArquiteturaDaoJDBC extends DB implements ArquiteturaDao {
 			ps.setInt(4, limit);
 			rs = ps.executeQuery();
 			
-			List<Arquitetura> list = new ArrayList<>();	
+			List<Arquitetura> list = new ArrayList<Arquitetura>();	
 			Map<Integer, Arquitetura> map = new HashMap<Integer, Arquitetura>();
  			Img img;
  			User user;
@@ -162,7 +162,7 @@ public class ArquiteturaDaoJDBC extends DB implements ArquiteturaDao {
 		}		
 	}
 	
-	@Override
+	
 	public List<Arquitetura> getArqCategoria(String query, Integer limit){
 		String sql = "SELECT p.id_prod, p.titulo, p.autor, p.descricao, p.localidade, p.categoria, a.id_arq, a.id_prod, i.id_img, " 
 				+ "i.path_img, i.desc_img, i.id_prod, u.nome FROM produto AS p INNER JOIN " 
@@ -182,7 +182,7 @@ public class ArquiteturaDaoJDBC extends DB implements ArquiteturaDao {
 			ps.setInt(7, limit);
 			rs = ps.executeQuery();
 			
-			List<Arquitetura> list = new ArrayList<>();	
+			List<Arquitetura> list = new ArrayList<Arquitetura>();	
 			Map<Integer, Arquitetura> map = new HashMap<Integer, Arquitetura>();
  			Img img;
  			User user;

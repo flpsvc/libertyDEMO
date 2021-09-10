@@ -22,7 +22,7 @@ public class LoginDaoJDBC extends DB implements LoginDao{
 		this.conn = conn;
 	}
 
-	@Override
+	
 	public boolean insertUser(User usuario) {
 		String sql = "SELECT u.login, u.senha FROM usuario AS u WHERE u.login = ?";  
 		String user = usuario.getUser();
@@ -67,7 +67,7 @@ public class LoginDaoJDBC extends DB implements LoginDao{
 	}
 
 
-	@Override
+	
 	public User validaUser(String user, String password) {
 		String sql = "SELECT * FROM usuario AS u WHERE u.login = ? AND u.senha = ?";  
 		String encryptpw = DigestUtils.sha256Hex(password);
@@ -95,7 +95,7 @@ public class LoginDaoJDBC extends DB implements LoginDao{
 		}
 	}
 
-	@Override
+	
 	public String validaRoleUser(String user) {
 		String sql = "SELECT u.role FROM usuario AS u WHERE u.login = ?";  
 

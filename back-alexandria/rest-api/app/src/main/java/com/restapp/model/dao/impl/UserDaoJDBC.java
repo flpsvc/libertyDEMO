@@ -28,7 +28,7 @@ public class UserDaoJDBC extends DB implements UserDao{
 		this.conn = conn;
 	}
 	
-	@Override
+	
 	public boolean insertArq(Arquitetura arq, Integer id_user) {
 		boolean sucesso = false;
 		int id = 0;
@@ -84,7 +84,7 @@ public class UserDaoJDBC extends DB implements UserDao{
 		return sucesso;
 	}
 	
-	@Override
+	
 	public boolean insertArte(Arte arte, Integer id_user) {
 		boolean sucesso = false;
 		int id = 0;
@@ -137,7 +137,7 @@ public class UserDaoJDBC extends DB implements UserDao{
 		return sucesso;
 	}
 	
-	@Override
+	
 	public boolean insertLivro(Livro livro, Integer id_user) {
 		boolean sucesso = false;
 		int id = 0;
@@ -192,7 +192,7 @@ public class UserDaoJDBC extends DB implements UserDao{
 		return sucesso;
 	}
 
-	@Override
+	
 	public List<Produto> displayUserProdsSimp(Integer id_user) {
 		String sql = "SELECT p.id_prod, p.titulo, p.autor, p.localidade, p.descricao, p.categoria, i.id_img, i.path_img, "
 				+ "i.desc_img, u.nome FROM produto AS p INNER JOIN img_path AS i ON p.id_prod = i.id_prod "
@@ -204,7 +204,7 @@ public class UserDaoJDBC extends DB implements UserDao{
 
 			rs = ps.executeQuery();
 			
-			List<Produto> list = new ArrayList<>();
+			List<Produto> list = new ArrayList<Produto>();
 			Map<Integer, Produto> map = new HashMap<Integer, Produto>();
  			Img img;
  			User user;
@@ -234,10 +234,10 @@ public class UserDaoJDBC extends DB implements UserDao{
 		}
 	}
 
-	@Override
+	
 	public Produto getProdById(Integer id_prod, Integer id_user) {		
 		Produto prod = new Produto();
-		List<Img> listimg = new ArrayList<>();
+		List<Img> listimg = new ArrayList<Img>();
 		User user;
 		int cont = 0;
 		int chave = 0;
@@ -265,7 +265,7 @@ public class UserDaoJDBC extends DB implements UserDao{
 				}
 				
 				if(chave != rs.getInt("i.id_prod") && cont != 1) {
-					listimg = new ArrayList<>();
+					listimg = new ArrayList<Img>();
 					listimg.add(new Img(rs.getInt("i.id_img"), rs.getString("i.path_img"), rs.getString("i.desc_img")));					
 				}
 								
@@ -310,7 +310,7 @@ public class UserDaoJDBC extends DB implements UserDao{
 				}
 				
 				if(chave != rs.getInt("i.id_prod") && cont != 1) {
-					listimg = new ArrayList<>();
+					listimg = new ArrayList<Img>();
 					listimg.add(new Img(rs.getInt("i.id_img"), rs.getString("i.path_img"), rs.getString("i.desc_img")));					
 				}
 								
@@ -355,7 +355,7 @@ public class UserDaoJDBC extends DB implements UserDao{
 				}
 				
 				if(chave != rs.getInt("i.id_prod") && cont != 1) {
-					listimg = new ArrayList<>();
+					listimg = new ArrayList<Img>();
 					listimg.add(new Img(rs.getInt("i.id_img"), rs.getString("i.path_img"), rs.getString("i.desc_img")));					
 				}
 								
@@ -379,7 +379,7 @@ public class UserDaoJDBC extends DB implements UserDao{
 		return prod;		
 	}
 	
-	@Override
+	
 	public boolean checkExistProd(String query) {
 		try {
 			String sql = "SELECT titulo FROM produto WHERE titulo = ?" ;
@@ -403,7 +403,7 @@ public class UserDaoJDBC extends DB implements UserDao{
 		
 	}
 	
-	@Override
+	
 	public boolean addNewImg(Produto prod) {
 		boolean sucesso = false;
 		try {
@@ -429,7 +429,7 @@ public class UserDaoJDBC extends DB implements UserDao{
 		}		
 	}
 
-	@Override
+	
 	public boolean updateUserArqProd(Arquitetura arq, Integer id_user) {
 		String sql = "UPDATE produto p, arquitetura a, img_path i SET p.titulo = ?, p.autor = ?, "
 				+ "p.descricao = ?, p.categoria = ?, p.tipo = ?, p.localidade = ?, p.ano = ?, a.curador = ?, a.area = ?, "
@@ -468,7 +468,7 @@ public class UserDaoJDBC extends DB implements UserDao{
         
 	}
 	
-	@Override
+	
 	public boolean updateUserArteProd(Arte arte, Integer id_user) {
 		String sql = "UPDATE produto p, arte ar, img_path i SET p.titulo = ?, p.autor = ?, "
 				+ "p.localidade = ?, p.descricao = ?, p.tipo = ?, p.ano = ?, ar.tecnica = ?, "
@@ -503,7 +503,7 @@ public class UserDaoJDBC extends DB implements UserDao{
 		}
 	}
 
-	@Override
+	
 	public boolean updateUserLivroProd(Livro livro, Integer id_user) {
 		String sql = "UPDATE produto p, livro l, img_path i SET p.titulo = ?, p.autor = ?, "
 				+ "p.descricao = ?, p.categoria = ?, p.tipo = ?, p.localidade = ?, p.ano = ?, l.editora= ?, l.edicao = ?, "
@@ -541,7 +541,7 @@ public class UserDaoJDBC extends DB implements UserDao{
 	}
 	
 
-	@Override
+	
 	public boolean deleteUserProd(Integer id_prod) {
 		String sql1 = "DELETE FROM arquitetura WHERE id_prod = ? ";
 		String sql2 = "DELETE FROM arte WHERE id_prod = ? ";

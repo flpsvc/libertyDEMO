@@ -21,7 +21,7 @@ import io.jsonwebtoken.Claims;
 @Provider
 @Priority(Priorities.AUTHENTICATION)
 public class FiltroAutenticacao implements ContainerRequestFilter {
-	@Override
+	
 	public void filter(ContainerRequestContext requestContext) throws IOException {
 		String authorizationHeader = requestContext.getHeaderString(HttpHeaders.AUTHORIZATION);
 		//System.out.println("AUTHORIZATION HEADER: "+authorizationHeader);
@@ -49,31 +49,31 @@ public class FiltroAutenticacao implements ContainerRequestFilter {
 
 	}
 
-	private void modificarRequestContext(ContainerRequestContext requestContext, String login) {
+	private void modificarRequestContext(ContainerRequestContext requestContext, final String login) {
 		final SecurityContext currentSecurityContext = requestContext.getSecurityContext();
 	
 		requestContext.setSecurityContext(new SecurityContext() {
-			@Override
+			
 			public Principal getUserPrincipal() {
 				return new Principal() {
-					@Override
+					
 					public String getName() {
 						return login;
 					}
 				};
 			}
 
-			@Override
+			
 			public boolean isUserInRole(String role) {
 				return true;
 			}
 
-			@Override
+			
 			public boolean isSecure() {
 				return currentSecurityContext.isSecure();
 			}
 
-			@Override
+			
 			public String getAuthenticationScheme() {
 				return "Bearer";
 			}

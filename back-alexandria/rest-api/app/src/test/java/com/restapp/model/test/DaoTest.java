@@ -61,7 +61,7 @@ class DaoTest extends DB{
 			
 			Arquitetura arq = new Arquitetura();	
 			Map<Integer, Arquitetura> map = new HashMap<Integer, Arquitetura>();
- 			List<Img> listimg = new ArrayList<>();
+ 			List<Img> listimg = new ArrayList();
   			int cont = 0;
   			int chave = 0;
  			
@@ -74,7 +74,7 @@ class DaoTest extends DB{
 				}
 				
 				if(chave != rs.getInt("i.id_prod") && cont != 1) {
-					listimg = new ArrayList<>();
+					listimg = new ArrayList();
 					listimg.add(new Img(rs.getInt("i.id_img"), rs.getString("i.path_img"), rs.getString("i.desc_img")));					
 				}
 								
@@ -112,7 +112,7 @@ class DaoTest extends DB{
 			
 			Arquitetura arq = new Arquitetura();	
 			Map<Integer, Arquitetura> map = new HashMap<Integer, Arquitetura>();
- 			List<Img> listimg = new ArrayList<>();
+ 			List<Img> listimg = new ArrayList();
   			int cont = 0;
   			int chave = 0;
  			
@@ -125,7 +125,7 @@ class DaoTest extends DB{
 				}
 				
 				if(chave != rs.getInt("i.id_prod") && cont != 1) {
-					listimg = new ArrayList<>();
+					listimg = new ArrayList();
 					listimg.add(new Img(rs.getInt("i.id_img"), rs.getString("i.path_img"), rs.getString("i.desc_img")));					
 				}
 								
@@ -171,7 +171,7 @@ class DaoTest extends DB{
 			ps.setInt(4, limit);
 			rs = ps.executeQuery();
 			
-			List<Arquitetura> list = new ArrayList<>();	
+			List<Arquitetura> list = new ArrayList();	
 			Map<Integer, Arquitetura> map = new HashMap<Integer, Arquitetura>();
  			Img img;
  			
@@ -222,7 +222,7 @@ class DaoTest extends DB{
 			ps.setInt(4, limit);
 			rs = ps.executeQuery();
 			
-			List<Arquitetura> list = new ArrayList<>();	
+			List<Arquitetura> list = new ArrayList();	
 			Map<Integer, Arquitetura> map = new HashMap<Integer, Arquitetura>();
  			Img img;
  			

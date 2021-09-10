@@ -26,7 +26,7 @@ public class FiltroAutorizacao implements ContainerRequestFilter {
 	@Context
 	private ResourceInfo resourceInfo;
 	
-	@Override
+	
 	public void filter(ContainerRequestContext requestContext) throws IOException {
 		/*TRATA A AUTORIZAÇÃO A NÍVEL DE CLASSE*/
 		Class<?> classe = resourceInfo.getResourceClass();
