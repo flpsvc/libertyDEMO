@@ -10,13 +10,7 @@ import javax.ws.rs.core.Response;
 import com.restapp.model.dao.DaoFactory;
 import com.restapp.model.dao.ProdutoDao;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.SwaggerDefinition;
-import io.swagger.annotations.Tag;
-
-
 @Path("/produto")
-@Api("/Produto Service")
 public class ProdutoResource {
 	
 	ProdutoDao proddao = DaoFactory.criarProduto();

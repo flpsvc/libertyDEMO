@@ -14,13 +14,7 @@ import com.restapp.model.dao.ArteDao;
 import com.restapp.model.dao.DaoFactory;
 
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.SwaggerDefinition;
-import io.swagger.annotations.Tag;
-
-
 @Path("/produto")
-@Api("/Arte Service")
 public class ArteResource {
 	
 	ArteDao artedao = DaoFactory.criarArte();
